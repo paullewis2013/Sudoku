@@ -9,13 +9,15 @@
         <meta name="author" content="Paul Lewis">
 
         <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     </head>
 
     <body>
         <h1>Sudoku Solver</h1>
+
         <div class="box">
-            <table contenteditable="true">
+            <table>
                 <tr id="r1">
                   <td id="r1c1"></td>
                   <td id="r1c2"></td>
@@ -28,94 +30,100 @@
                   <td id="r1c9"></td>
                 </tr>
                 <tr id="r2">
-                    <td id="r2c1">1</td>
-                    <td id="r2c2">2</td>
-                    <td id="r2c3">3</td>
-                    <td id="r2c4">4</td>
-                    <td id="r2c5">5</td>
-                    <td id="r2c6">6</td>
-                    <td id="r2c7">7</td>
-                    <td id="r2c8">8</td>
-                    <td id="r2c9">9</td>
+                    <td id="r2c1"></td>
+                    <td id="r2c2"></td>
+                    <td id="r2c3"></td>
+                    <td id="r2c4"></td>
+                    <td id="r2c5"></td>
+                    <td id="r2c6"></td>
+                    <td id="r2c7"></td>
+                    <td id="r2c8"></td>
+                    <td id="r2c9"></td>
                 </tr>
                 <tr id="r3">
-                    <td id="r3c1">1</td>
-                    <td id="r3c2">2</td>
-                    <td id="r3c3">3</td>
-                    <td id="r3c4">4</td>
-                    <td id="r3c5">5</td>
-                    <td id="r3c6">6</td>
-                    <td id="r3c7">7</td>
-                    <td id="r3c8">8</td>
-                    <td id="r3c9">9</td>
+                    <td id="r3c1"></td>
+                    <td id="r3c2"></td>
+                    <td id="r3c3"></td>
+                    <td id="r3c4"></td>
+                    <td id="r3c5"></td>
+                    <td id="r3c6"></td>
+                    <td id="r3c7"></td>
+                    <td id="r3c8"></td>
+                    <td id="r3c9"></td>
                 </tr>
                 <tr id="r4">
-                    <td id="r4c1">1</td>
-                    <td id="r4c2">2</td>
-                    <td id="r4c3">3</td>
-                    <td id="r4c4">4</td>
-                    <td id="r4c5">5</td>
-                    <td id="r4c6">6</td>
-                    <td id="r4c7">7</td>
-                    <td id="r4c8">8</td>
-                    <td id="r4c9">9</td>
+                    <td id="r4c1"></td>
+                    <td id="r4c2"></td>
+                    <td id="r4c3"></td>
+                    <td id="r4c4"></td>
+                    <td id="r4c5"></td>
+                    <td id="r4c6"></td>
+                    <td id="r4c7"></td>
+                    <td id="r4c8"></td>
+                    <td id="r4c9"></td>
                 </tr>
                 <tr id="r5">
-                    <td id="r5c1">1</td>
-                    <td id="r5c2">2</td>
-                    <td id="r5c3">3</td>
-                    <td id="r5c4">4</td>
-                    <td id="r5c5">5</td>
-                    <td id="r5c6">6</td>
-                    <td id="r5c7">7</td>
-                    <td id="r5c8">8</td>
-                    <td id="r5c9">9</td>
+                    <td id="r5c1"></td>
+                    <td id="r5c2"></td>
+                    <td id="r5c3"></td>
+                    <td id="r5c4"></td>
+                    <td id="r5c5"></td>
+                    <td id="r5c6"></td>
+                    <td id="r5c7"></td>
+                    <td id="r5c8"></td>
+                    <td id="r5c9"></td>
                 </tr>
                 <tr id="r6">
-                    <td id="r6c1">1</td>
-                    <td id="r6c2">2</td>
-                    <td id="r6c3">3</td>
-                    <td id="r6c4">4</td>
-                    <td id="r6c5">5</td>
-                    <td id="r6c6">6</td>
-                    <td id="r6c7">7</td>
-                    <td id="r6c8">8</td>
-                    <td id="r6c9">9</td>
+                    <td id="r6c1"></td>
+                    <td id="r6c2"></td>
+                    <td id="r6c3"></td>
+                    <td id="r6c4"></td>
+                    <td id="r6c5"></td>
+                    <td id="r6c6"></td>
+                    <td id="r6c7"></td>
+                    <td id="r6c8"></td>
+                    <td id="r6c9"></td>
                 </tr>
                 <tr id="r7">
-                    <td id="r7c1">1</td>
-                    <td id="r7c2">2</td>
-                    <td id="r7c3">3</td>
-                    <td id="r7c4">4</td>
-                    <td id="r7c5">5</td>
-                    <td id="r7c6">6</td>
-                    <td id="r7c7">7</td>
-                    <td id="r7c8">8</td>
-                    <td id="r7c9">9</td>
+                    <td id="r7c1"></td>
+                    <td id="r7c2"></td>
+                    <td id="r7c3"></td>
+                    <td id="r7c4"></td>
+                    <td id="r7c5"></td>
+                    <td id="r7c6"></td>
+                    <td id="r7c7"></td>
+                    <td id="r7c8"></td>
+                    <td id="r7c9"></td>
                 </tr>
                 <tr id="r8">
-                    <td id="r8c1">1</td>
-                    <td id="r8c2">2</td>
-                    <td id="r8c3">3</td>
-                    <td id="r8c4">4</td>
-                    <td id="r8c5">5</td>
-                    <td id="r8c6">6</td>
-                    <td id="r8c7">7</td>
-                    <td id="r8c8">8</td>
-                    <td id="r8c9">9</td>
+                    <td id="r8c1"></td>
+                    <td id="r8c2"></td>
+                    <td id="r8c3"></td>
+                    <td id="r8c4"></td>
+                    <td id="r8c5"></td>
+                    <td id="r8c6"></td>
+                    <td id="r8c7"></td>
+                    <td id="r8c8"></td>
+                    <td id="r8c9"></td>
                 </tr>
                 <tr id="r9">
-                    <td id="r9c1">1</td>
-                    <td id="r9c2">2</td>
-                    <td id="r9c3">3</td>
-                    <td id="r9c4">4</td>
-                    <td id="r9c5">5</td>
-                    <td id="r9c6">6</td>
-                    <td id="r9c7">7</td>
-                    <td id="r9c8">8</td>
-                    <td id="r9c9">9</td>
+                    <td id="r9c1"></td>
+                    <td id="r9c2"></td>
+                    <td id="r9c3"></td>
+                    <td id="r9c4"></td>
+                    <td id="r9c5"></td>
+                    <td id="r9c6"></td>
+                    <td id="r9c7"></td>
+                    <td id="r9c8"></td>
+                    <td id="r9c9"></td>
                 </tr>
             </table>
+        </div>
+
+        <div id="controls">
+            <button class="btn btn-dark" onclick="loadEasy()">Load Easy</button>
+            <button class="btn btn-dark">Load Medium</button>
+            <button class="btn btn-dark">Load Difficult</button>
         </div>
         
 
