@@ -64,6 +64,7 @@ var hard =     [[0,2,0,0,0,0,0,0,0],
 function loadEasy(){
 
     clearButton()
+    clearButton()
 
     for(let i = 0; i < 9; i++){
         for(let j = 0; j < 9; j++){
@@ -78,6 +79,7 @@ function loadEasy(){
 function loadMedium(){
 
     clearButton()
+    clearButton()
 
     for(let i = 0; i < 9; i++){
         for(let j = 0; j < 9; j++){
@@ -91,6 +93,7 @@ function loadMedium(){
 }
 function loadHard(){
 
+    clearButton()
     clearButton()
 
     for(let i = 0; i < 9; i++){
@@ -285,7 +288,7 @@ function solve(index){
         console.log("backtracking")
         board[row][col] = 0
         cellHighest[index] = 1
-        setTimeout(solve, 1, index - 1)
+        solve(index - 1)
     }
 
     
@@ -318,6 +321,8 @@ function clearButton(){
     console.log("clearing")
     clearInterval(intervalHandle)
 
+    cells = []
+    cellHighest = []
     cleanCells()
 
     for(let i = 0; i < 9; i++){

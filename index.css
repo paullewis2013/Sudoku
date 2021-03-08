@@ -24,15 +24,15 @@ table{
     height: 100%;
     margin: auto;
 }
-td:hover{
+/* td:hover{
     background-color: white;
-}
+} */
 td {
     min-height:40px;
     min-width:40px;
     /* border:1px solid; */
     text-align:center;
-    border-radius: 3px;
+    /* border-radius: 5px; */
 }
 td:nth-child(3n) {
     border-right: 3px solid;
