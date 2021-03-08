@@ -17,7 +17,7 @@
         <h1>Sudoku Solver</h1>
 
         <div class="box">
-            <table>
+            <table contenteditable>
                 <tr id="r1">
                   <td id="r1c1"></td>
                   <td id="r1c2"></td>
@@ -121,10 +121,11 @@
         </div>
 
         <div id="controls">
-            <button class="btn btn-dark" onclick="loadEasy()">Load Easy</button>
-            <button class="btn btn-dark" onclick="loadMedium()">Load Medium</button>
-            <button class="btn btn-dark" onclick="loadHard()">Load Difficult</button>
-            <button class="btn btn-light" onclick="solve(0,1)">Solve</button>
+            <button class="btn btn-dark" onclick="loadEasy()">Load Easy Example</button>
+            <button class="btn btn-dark" onclick="loadMedium()">Load Medium Example</button>
+            <button class="btn btn-dark" onclick="loadHard()">Load Difficult Example</button>
+            <button class="btn btn-light" onclick="solveButton()">Solve</button>
+            <button class="btn btn-danger" onclick="clearButton()">Clear</button>
         </div>
         
         <script src="main.js"></script>

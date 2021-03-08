@@ -9,8 +9,8 @@ html, body{
 td{
     margin: 0px;
     padding: 10px;
-    height: 3vh;
-    width: 3vh;
+    height: 3vw;
+    width: 3vw;
     border: 0.5px solid;
     border-color: black;
     background-color: 	#fdf6e3;
@@ -28,8 +28,8 @@ td:hover{
     background-color: white;
 }
 td {
-    /* height:30px;
-    width:30px; */
+    min-height:40px;
+    min-width:40px;
     /* border:1px solid; */
     text-align:center;
     border-radius: 3px;
@@ -57,6 +57,8 @@ h1{
   
     height: 35vw;
     width: 35vw;
+    min-width: 450px;
+    min-height: 450px;
     /* margin-top: 20vh; */
     margin: 100px auto;
     background: #2eada3;

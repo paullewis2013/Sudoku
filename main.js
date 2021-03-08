@@ -63,6 +63,8 @@ var hard =     [[0,2,0,0,0,0,0,0,0],
 
 function loadEasy(){
 
+    clearButton()
+
     for(let i = 0; i < 9; i++){
         for(let j = 0; j < 9; j++){
             board[i][j] = easy[i][j]
@@ -70,8 +72,13 @@ function loadEasy(){
     }
     findCells()
     colorCells()
+
+    drawBoard()
 }
 function loadMedium(){
+
+    clearButton()
+
     for(let i = 0; i < 9; i++){
         for(let j = 0; j < 9; j++){
             board[i][j] = medium[i][j]
@@ -79,8 +86,13 @@ function loadMedium(){
     }
     findCells()
     colorCells()
+
+    drawBoard()
 }
 function loadHard(){
+
+    clearButton()
+
     for(let i = 0; i < 9; i++){
         for(let j = 0; j < 9; j++){
             board[i][j] = hard[i][j]
@@ -88,6 +100,8 @@ function loadHard(){
     }
     findCells()
     colorCells()
+
+    drawBoard()
 }
 
 //returns true if col includes num, false otherwise
@@ -199,9 +213,30 @@ function colorCells(){
     }
 }
 
+function cleanCells(){
+    for(let i = 0; i < 9; i++){
+        for(let j = 0; j < 9; j++){
+            let id = "r" + (i+1) + "c" + (j+1);
+            let content = document.getElementById(id).innerHTML;
+
+            let valid = false
+
+            for(let k = 1; k <= 9; k++){
+                if(content == k){
+                    board[i][j] = k
+                    valid = true
+                }
+            }
+            if(!valid){
+                board[i][j] = 0
+            }
+        }
+    }
+}
+
 function solve(index){
 
-    console.log("called")
+    // console.log("called")
 
     //check if unsolvable
     if(index < 0){
@@ -211,7 +246,7 @@ function solve(index){
         row = Math.floor(cells[index] / 9)
         col = cells[index]%9
 
-        console.log(row, col)
+        // console.log(row, col)
 
         //brute force try 1 - 9
         for(let j = cellHighest[index]; j <= 9; j++){
@@ -247,6 +282,7 @@ function solve(index){
         }
         //if we reach here current state has failed and we need to backtrack
         //reset highest num reached for this point
+        console.log("backtracking")
         board[row][col] = 0
         cellHighest[index] = 1
         setTimeout(solve, 1, index - 1)
@@ -255,6 +291,15 @@ function solve(index){
     
 }
 
+var intervalHandle;
+
+function solveButton(){
+    intervalHandle = setInterval(drawBoard, 20)
+    cleanCells()
+    findCells()
+    colorCells()
+    solve(0)
+}
 
 function checkFull(){
     
@@ -269,5 +314,23 @@ function checkFull(){
     return true
 }
 
-setInterval(drawBoard, 20)
+function clearButton(){
+    console.log("clearing")
+    clearInterval(intervalHandle)
+
+    cleanCells()
+
+    for(let i = 0; i < 9; i++){
+        for(let j = 0; j < 9; j++){
+            board[i][j] = 0
+            let id = "r" + (i+1) + "c" + (j+1);
+            document.getElementById(id).innerHTML = "";
+            document.getElementById(id).style.backgroundColor = "#fdf6e3";
+        }
+    }
+
+    drawBoard()
+}
+
+
 
