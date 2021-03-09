@@ -1,5 +1,79 @@
+//canvas code
+var canvas = document.getElementById("canvas")
 
+canvas.style.width = window.innerWidth/4 + "px";
+canvas.style.height = 0.9 * window.innerHeight + "px";  
+
+var ctx = canvas.getContext('2d')
+
+// Set actual size in memory (scaled to account for extra pixel density).
+var scale = window.devicePixelRatio; // Change to 1 on retina screens to see blurry canvas.
+canvas.width = Math.floor((window.innerWidth/4) * scale);
+canvas.height = Math.floor(5 *(window.innerHeight/6) * scale);
+
+var clear = false;
+
+function drawCanvas(){
+    if(clear){
+        clearCanvas()
+        clear = false
+    }
+
+    let radius = canvas.height/(3*(cellHighest.length + 1))
+    let x = 0
+    let y = radius * 2
+
+    //draw nodes
+    for(let i = 0; i < cellHighest.length; i++){
+        x = canvas.width/18
+        for(let j = 0; j < 9; j++){
+            ctx.beginPath()
+            ctx.arc(x,y,radius,0,2*Math.PI, false)
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = "#93a1a1"
+            ctx.stroke()
+            if(j + 1 < cellHighest[i]){
+                ctx.fillStyle = "#93a1a1"
+                ctx.fill()
+            }else if(j + 1 == cellHighest[i]){
+                ctx.fillStyle = "#d33682"
+                ctx.fill()
+            }
+            ctx.closePath()
+            x += canvas.width/9
+        }
+        y += 3 * radius
+    }
+
+    //draw path
+    ctx.beginPath()
+    y = radius * 2;
+    x = canvas.width/18 + canvas.width/9 * (cellHighest[0] - 1);
+    ctx.moveTo(x, y)
+    for(let i = 1; i < cellHighest.length; i++){
+        y += 3 * radius
+        x = canvas.width/18 + canvas.width/9 * (cellHighest[i] - 1);
+        ctx.lineTo(x, y)
+    }
+    ctx.strokeStyle = "#d33682"
+    ctx.lineWidth = 4;
+    ctx.stroke()
+    ctx.closePath()
+}
+
+function clearCanvas(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+
+
+//an array that will store the cells of the puzzle
 var board = []
+
+//an array that stores index of cells needing to be solved
+var cells = []
+var cellHighest = []
+
 
 //create board
 for(let i = 0; i < 9; i++){
@@ -11,7 +85,7 @@ for(let i = 0; i < 9; i++){
 drawBoard()
 
 function drawBoard(){
-    // console.log("draw")
+    console.log("draw")
 
     for(let i = 0; i < board.length; i++){
         for(let j = 0; j < board[i].length; j++){
@@ -29,6 +103,7 @@ function drawBoard(){
 
         }
     }
+    drawCanvas()
 }
 
 var easy = [[0,0,0,2,6,0,7,0,1],
@@ -65,6 +140,7 @@ function loadEasy(){
 
     clearButton()
     clearButton()
+    clearCanvas()
 
     for(let i = 0; i < 9; i++){
         for(let j = 0; j < 9; j++){
@@ -80,6 +156,7 @@ function loadMedium(){
 
     clearButton()
     clearButton()
+    clearCanvas()
 
     for(let i = 0; i < 9; i++){
         for(let j = 0; j < 9; j++){
@@ -95,6 +172,7 @@ function loadHard(){
 
     clearButton()
     clearButton()
+    clearCanvas()
 
     for(let i = 0; i < 9; i++){
         for(let j = 0; j < 9; j++){
@@ -172,9 +250,6 @@ function inSquare(row, col, num){
     return false
 }
 
-//an array that stores index of cells needing to be solved
-var cells = []
-var cellHighest = []
 
 //adds all cells that are empty to array
 function findCells(){
@@ -240,6 +315,7 @@ function cleanCells(){
 function solve(index){
 
     // console.log("called")
+    drawBoard()
 
     //check if unsolvable
     if(index < 0){
@@ -269,6 +345,11 @@ function solve(index){
                         //check if solved
                         if (checkFull()){
                             console.log("Full")
+                            cellHighest[index] = j
+                            clear = true;
+                            // drawCanvas()
+                            drawBoard()
+                            setTimeout(clearInterval, 1000, intervalHandle)
                             return true
                         }
                         //if not full continue
@@ -288,6 +369,7 @@ function solve(index){
         console.log("backtracking")
         board[row][col] = 0
         cellHighest[index] = 1
+        clear = true;
         solve(index - 1)
     }
 
@@ -297,7 +379,7 @@ function solve(index){
 var intervalHandle;
 
 function solveButton(){
-    intervalHandle = setInterval(drawBoard, 20)
+    // intervalHandle = setInterval(drawBoard, 20)
     cleanCells()
     findCells()
     colorCells()
@@ -335,6 +417,7 @@ function clearButton(){
     }
 
     drawBoard()
+    clearCanvas()
 }
 
 
